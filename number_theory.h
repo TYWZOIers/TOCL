@@ -52,9 +52,9 @@ void extend_gcd(int a, int b, int& x, int& y)
 		}
         extend_gcd (b, a%b, x, y);
 		/*相当于朴素欧几里德算法*/
-		int t = x;
-		x = y;
-		y = t - a/b*y;
+	int t = x;
+	x = y;
+	y = t - a/b*y;
 }
 
 /*
@@ -67,7 +67,7 @@ bool is_prime (int a)
 {
         if (a <= 1)
                 return false;
-        /*1不是素数*/
+        /*<1不是素数*/
         for (int i = 2; i <= sqrt (a); i++)
                 if (a % i == 0)
                         return false;
@@ -79,7 +79,7 @@ bool is_prime (int a)
 /*
 * 函数名 get_prime(筛法求素数)
 * O(n loglog n)
-* 将 <= n 的素数存入数组get, 返回素数个数(n >= 2)
+* 将 <= n 的素数存入数组get, 返回素数个数 (n >= 2)
 */
 int get_prime (int n, int get[]) 
 {
@@ -101,4 +101,4 @@ int get_prime (int n, int get[])
         return k-1;
 }
 
-}
+} 
