@@ -6,13 +6,12 @@
 * 包括常用排序和排序相关的算法
 */
 
+#pragma once
+#include "basic.h"
 
 namespace TOCL {
 
-
 /*>>>函数声明<<<*/
-template <typename T> void swap (T&, T&);
-/*交换*/
 template <typename T> void bubble_sort (T[], int, int);
 /*冒泡排序*/
 template <typename T> void quick_sort (T[], int, int);
@@ -24,21 +23,13 @@ template <typename T> int merge_sort (T[], int, int);
 void bucket_sort(unsigned int[], int, int);
 /*桶排序*/
 
+/*template <typename T> void heap_sort (T[], int, int);
+* 堆排序在heap.h中
+*/
+
 
 /*>>>函数定义<<<*/
 
-/*
-* 函数名 swap(交换)
-* O(1)
-* 参数说明 a,b 交换的数
-*/
-template <typename T>
-void swap (T& a, T& b)
-{
-        T temp = a;
-        a = b;
-        b = temp;
-}
 
 /*
 * 函数名 bubble_sort(冒泡排序)
@@ -78,7 +69,7 @@ void bubble_sort (T array[], int begin, int end)
 
 /*
 * 函数名 quick_sort(快速排序)
-* O(nlogn)
+* O(nlog2n)
 * 参数说明 array:待排序数组, begin:排序起点, end:排序终点
 * 请重载"<"以自定义数据类型排序或降序排序
 * 详见冒泡排序前的例子
@@ -150,7 +141,7 @@ void binary_merge (T array[], int begin,  int mid, int end)
 /*
 * 函数名 merge_sort(二路归并排序并求逆序对)
 * 作用 二路归并排序无序数列
-* O(nlogn)
+* O(nlog2n)
 * 参数说明 array:待排序数组, begin:排序起点, end:排序终点
 * 请重载"<"以自定义数据类型排序或降序排序
 * 返回逆序对个数
