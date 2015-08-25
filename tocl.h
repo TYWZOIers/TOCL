@@ -26,7 +26,7 @@ Github地址： www.github.com/TYWZOIers/TOCL
 
 #include "basic.h"
 #include "sort.h"
-#include "bignum.h"
+/*#include "bignum.h"*/
 #include "number_theory.h"
 #include "heap.h"
 
