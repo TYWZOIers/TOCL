@@ -9,18 +9,21 @@
 
 namespace TOCL {
 
+
 /*>>>函数声明<<<*/
 template <typename T> void swap (T&, T&);
 /*交换*/
+template <typename T> void bubble_sort (T[], int, int);
+/*冒泡排序*/
 template <typename T> void quick_sort (T[], int, int);
 /*快排*/
 template <typename T> void binary_merge (T[], int,  int, int);
 /*二路归并*/
 template <typename T> int merge_sort (T[], int, int);
-
 /*二路归并排序*/
 void bucket_sort(unsigned int[], int, int);
 /*桶排序*/
+
 
 /*>>>函数定义<<<*/
 
@@ -38,8 +41,8 @@ void swap (T& a, T& b)
 }
 
 /*
-* 函数名 quick_sort(快速排序)
-* O(nlogn)
+* 函数名 bubble_sort(冒泡排序)
+* O(n^2)
 * 参数说明 array:待排序数组, begin:排序起点, end:排序终点
 * 请重载"<"以自定义数据类型排序或降序排序
 * 例如
@@ -50,6 +53,35 @@ void swap (T& a, T& b)
 *                 //降序排序
 *         }
 * }
+*/
+template <typename T> 
+void bubble_sort (T array[], int begin, int end) 
+{
+        bool exc = false;
+        /*是否交换的标志，若未交换则不需要继续排序*/
+        for (int i = begin; i <= end; i++) {
+                exc = false;
+                for (int j = begin; j < end; j++) {
+                        /*一趟冒泡排序*/
+                        if (array[j] > array[j+1]){
+                                /*若相反，交换*/
+                                swap (array[j], array[j+1]);
+                                exc = true;
+                                /*标记为已排序*/
+                        }
+                }
+                if (!exc)
+                        break;
+                /*没有交换，说明排序已完毕*/
+        }
+}
+
+/*
+* 函数名 quick_sort(快速排序)
+* O(nlogn)
+* 参数说明 array:待排序数组, begin:排序起点, end:排序终点
+* 请重载"<"以自定义数据类型排序或降序排序
+* 详见冒泡排序前的例子
 */
 
 template <typename T>
@@ -96,7 +128,7 @@ void binary_merge (T array[], int begin,  int mid, int end)
         while (i <= mid && j <= end) {
                 if (array[i] == array[j])
                         temp[k++] = array[i++];
-                if (array[i] < array[j]) 
+                else if (array[i] < array[j]) 
                         temp[k++] = array[i++];
                 else {
                         temp[k++] = array[j++];
@@ -143,7 +175,7 @@ int merge_sort (T array[], int begin, int end)
         while (i <= mid && j <= end) {
                 if (array[i] == array[j])
                         temp[k++] = array[i++];
-                if (array[i] < array[j]) 
+                else if (array[i] < array[j]) 
                         temp[k++] = array[i++];
                 else {
                         temp[k++] = array[j++];
@@ -196,6 +228,7 @@ void bucket_sort(unsigned int array[], int begin, int end)
 }
 
 }
+
 /*如何使用:
 * 将头文件放在源文件同目录下，include即可
 * 例如：
